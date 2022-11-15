@@ -191,8 +191,9 @@ export class EncodingProcess {
     }
   };
 
-  #handleStartEvent = (): void => {
+  #handleStartEvent = async (): Promise<void> => {
     this.#encoding.emit("start", new EncodingStartEvent(this.#encoding));
+    return Promise.resolve();
   };
 
   #handleInfoEvent = async (): Promise<void> => {
