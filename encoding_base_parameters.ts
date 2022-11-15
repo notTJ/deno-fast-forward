@@ -109,6 +109,22 @@ export abstract class FFmpegBaseParameters<T extends FFmpegBaseOptions>
     this.opts.noAudio = disable;
   }
 
+  get start(): number | string {
+    return this.opts.start;
+  }
+
+  set start(start: number | string) {
+    this.opts.start = start;
+  }
+
+  get end(): number | string {
+    return this.opts.start;
+  }
+
+  set end(start: number | string) {
+    this.opts.start = start;
+  }
+
   get args(): string[] | undefined {
     return this.opts.args;
   }
