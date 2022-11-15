@@ -294,12 +294,12 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
     return this;
   }
 
-  start(start: number | string): this {
+  start(start: string): this {
     this.encoding.start = start;
     return this;
   }
 
-  end(end: number | string): this {
+  end(end: string): this {
     this.encoding.end = end;
     return this;
   }

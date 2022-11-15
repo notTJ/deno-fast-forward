@@ -118,10 +118,10 @@ export class FFmpegCommand {
       this.#args.push("-vcodec", options.videoCodec);
     }
     if (options.start) {
-      this.#args.push("-ss", options.start.toString());
+      this.#args.push("-ss", options.start);
     }
     if (options.end) {
-      this.#args.push("-to", options.end.toString());
+      this.#args.push("-to", options.end);
     }
     if (options.args) {
       this.#args.push(...options.args);

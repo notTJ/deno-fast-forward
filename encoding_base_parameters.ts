@@ -10,6 +10,8 @@ export interface FFmpegBaseOptions {
   noVideo?: boolean;
   sampleRate?: number;
   videoCodec?: string;
+  start?: string;
+  end?:  string;
 }
 
 /** input & output parameters */
@@ -109,20 +111,20 @@ export abstract class FFmpegBaseParameters<T extends FFmpegBaseOptions>
     this.opts.noAudio = disable;
   }
 
-  get start(): number | string {
+  get start(): string | undefined {
     return this.opts.start;
   }
 
-  set start(start: number | string) {
+  set start(start: string | undefined) {
     this.opts.start = start;
   }
 
-  get end(): number | string {
-    return this.opts.start;
+  get end(): string | undefined {
+    return this.opts.end;
   }
 
-  set end(start: number | string) {
-    this.opts.start = start;
+  set end(end: string | undefined) {
+    this.opts.end = end;
   }
 
   get args(): string[] | undefined {
