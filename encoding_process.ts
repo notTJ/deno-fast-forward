@@ -220,14 +220,13 @@ export class EncodingProcess {
         stream.codec_type === "video"
       ) as VideoStream;
     const isVideo = !!videoStream;
-    const progressCalc = {
-      length: isVideo ? Number(videoStream.nb_frames) : 0,
-      progressFunc: (dist: number): number => isVideo ? Math.trunc(100 / (length!/ dist)) : 0
-    }
+    const length = isVideo ? Number(videoStream.nb_frames) : 0;
+    const progressFunc = (dist: number): number => isVideo ? Math.trunc(100 / (length!/ dist)) : 0
+
     for await (const chunk of iterateReader(this.process.stdout)) {
       const progressInfo: ProgressInfo = parseProgressOutput(chunk);
       const distance = isVideo ? Number(progressInfo.frame) : 0;
-      const progress = progressCalc.progressFunc(distance);
+      const progress = progressFunc(distance);
 
       const progressEvent = new EncodingProgressEvent(
         this.#encoding,
