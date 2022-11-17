@@ -126,3 +126,19 @@ export interface MediaFormat {
     creation_time: string;
   };
 }
+
+export enum Resolution {
+  HD7680p = "7680x4320",
+  // HD8K = "7680x4320",
+  HD2160p = "2840x2160",
+  // HD4K = "2840x2160",
+  HD1440p = "2560x1440",
+  // HD2K = "2560x1440",
+  HD1080p = "1920x1080",
+  HD720p = "1280x720",
+  SD540p = "960x540",
+  SD480p = "854x480",
+  SD360p = "640x360",
+  SD240p = "426x240",
+  SD180p = "320x180",
+}

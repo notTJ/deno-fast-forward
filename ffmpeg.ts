@@ -9,6 +9,7 @@ import type {
   EncodingProgressEventListener,
   EncodingStartEventListener,
 } from "./events.ts";
+import {Resolution} from "./media_info.ts";
 
 export function ffmpeg(
   input?: string,
@@ -332,6 +333,41 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
   ): this {
     // deno-lint-ignore no-explicit-any
     this.encoding.addEventListener(event as any, listener as any);
+    return this;
+  }
+
+  setResolution(resolution: Resolution): this {
+    if (resolution === Resolution.HD7680p) {
+      this.encoding.width = 7680;
+      this.encoding.height = 4320;
+    } else if (resolution === Resolution.HD2160p) {
+      this.encoding.width = 2840;
+      this.encoding.height = 2160;
+    } else if (resolution === Resolution.HD1440p) {
+      this.encoding.width = 2560;
+      this.encoding.height = 1440;
+    } else if (resolution === Resolution.HD1080p){
+      this.encoding.width = 1920;
+      this.encoding.height = 1080;
+    } else if (resolution === Resolution.HD720p) {
+      this.encoding.width = 1280;
+      this.encoding.height = 720;
+    } else if (resolution === Resolution.SD540p) {
+      this.encoding.width = 960;
+      this.encoding.height = 540;
+    } else if (resolution === Resolution.SD480p) {
+      this.encoding.width = 854;
+      this.encoding.height = 480;
+    } else if (resolution === Resolution.SD360p) {
+      this.encoding.width = 640;
+      this.encoding.height = 360;
+    } else if (resolution === Resolution.SD240p) {
+      this.encoding.width = 426;
+      this.encoding.height = 240;
+    } else if (resolution === Resolution.SD180p) {
+      this.encoding.width = 320;
+      this.encoding.height = 180;
+    }
     return this;
   }
 }
