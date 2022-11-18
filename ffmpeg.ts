@@ -9,7 +9,7 @@ import type {
   EncodingProgressEventListener,
   EncodingStartEventListener,
 } from "./events.ts";
-import {Resolution} from "./media_info.ts";
+import { Resolution } from "./media_info.ts";
 
 export function ffmpeg(
   input?: string,
@@ -346,7 +346,7 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
     } else if (resolution === Resolution.HD1440p) {
       this.encoding.width = 2560;
       this.encoding.height = 1440;
-    } else if (resolution === Resolution.HD1080p){
+    } else if (resolution === Resolution.HD1080p) {
       this.encoding.width = 1920;
       this.encoding.height = 1080;
     } else if (resolution === Resolution.HD720p) {

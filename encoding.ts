@@ -227,4 +227,6 @@ export class Encoding extends AbstractFFmpegOutputParameters {
       }
     }
   }
+
+  private "#opts": FFmpegOutputOptions;
 }
