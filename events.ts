@@ -49,6 +49,8 @@ export class EncodingInfoEvent extends AbstractEncodingEvent<"info"> {
   get info(): MediaInfo {
     return this.#info;
   }
+
+  private readonly "#encoding": Encoding;
 }
 
 export type EncodingStartEventListener = (
@@ -59,6 +61,8 @@ export class EncodingStartEvent extends AbstractEncodingEvent<"start"> {
   constructor(encoding: Encoding) {
     super("start", encoding);
   }
+
+  private readonly "#encoding": Encoding;
 }
 
 export type EncodingProgressEventListener = (
@@ -70,6 +74,7 @@ export class EncodingProgressEvent extends AbstractEncodingEvent<"progress"> {
   readonly fps: number;
   readonly bitrate: string;
   readonly totalSize: number;
+  // readonly outTimeUs: number;
   readonly outTimeMs: number;
   readonly outTime: string;
   readonly dupFrames: number;
@@ -88,6 +93,7 @@ export class EncodingProgressEvent extends AbstractEncodingEvent<"progress"> {
     this.fps = parseFloat(info.fps);
     this.bitrate = info.bitrate;
     this.totalSize = parseInt(info.total_size);
+    // this.outTimeUs = parseInt(info.out_time_us);
     this.outTimeMs = parseInt(info.out_time_ms);
     this.outTime = info.out_time;
     this.dupFrames = parseInt(info.dup_frames);
@@ -96,6 +102,8 @@ export class EncodingProgressEvent extends AbstractEncodingEvent<"progress"> {
     this.progress = progress;
     this.done = info.progress === "end";
   }
+
+  private readonly "#encoding": Encoding;
 }
 
 // FFmpegProgressInfo
@@ -104,9 +112,14 @@ export interface ProgressInfo {
   fps: string;
   // deno-lint-ignore camelcase
   stream_0_0_q: string;
+
+  // size: string; // audio end only ?
+  // time: string; // audio end only ?
+
   bitrate: string;
   // deno-lint-ignore camelcase
   total_size: string;
+  // out_time_us: string;
   // deno-lint-ignore camelcase
   out_time_ms: string;
   // deno-lint-ignore camelcase
@@ -127,12 +140,16 @@ export class EncodingEndEvent extends AbstractEncodingEvent<"end"> {
   constructor(encoding: Encoding) {
     super("end", encoding);
   }
+
+  private readonly "#encoding": Encoding;
 }
 
 export class EncodingErrorEvent extends AbstractEncodingEvent<"error"> {
   constructor(encoding: Encoding, readonly error: Error) {
     super("error", encoding);
   }
+
+  private readonly "#encoding": Encoding;
 }
 
 export type EncodingErrorEventListener = (
