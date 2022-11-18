@@ -1,8 +1,8 @@
 #!/usr/bin/env deno run --unstable --allow-read --allow-write --allow-run
 
-import type { EncodingProcess } from "../mod.ts";
-import { ffmpeg } from "../mod.ts";
-import { copy } from "../deps.ts";
+import type { EncodingProcess } from "../src/mod.ts";
+import { ffmpeg } from "../src/mod.ts";
+import { copy } from "../src/deps.ts";
 
 const encoder = ffmpeg("https://www.w3schools.com/html/mov_bbb.mp4")
   .output("pipe:1")

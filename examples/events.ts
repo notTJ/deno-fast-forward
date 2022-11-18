@@ -1,6 +1,6 @@
 #!/usr/bin/env deno run --unstable --allow-read --allow-run
 
-import { ffmpeg } from "../ffmpeg.ts";
+import { ffmpeg } from "../src/ffmpeg.ts";
 
 await ffmpeg("https://www.w3schools.com/html/mov_bbb.mp4")
   .audioBitrate("192k")

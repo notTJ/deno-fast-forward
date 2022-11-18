@@ -1,9 +1,9 @@
 #!/usr/bin/env deno run --unstable --allow-read --allow-run
 
 import { wait } from "https://deno.land/x/wait@0.1.7/mod.ts";
-import type { EncodingEvent } from "../events.ts";
-import type { EncodingProcess } from "../encoding_process.ts";
-import { ffmpeg } from "../ffmpeg.ts";
+import type { EncodingEvent } from "../src/events.ts";
+import type { EncodingProcess } from "../src/encoding_process.ts";
+import { ffmpeg } from "../src/ffmpeg.ts";
 
 const spinner = wait({ text: "" });
 
