@@ -11,3 +11,6 @@ export * from "./ffmpeg.ts";
 export * from "./ffmpeg_command.ts";
 export * from "./ffprobe.ts";
 export * from "./media_info.ts";
+export * from "./filters/complex-filter.ts"
+export * from "./filters/channel-layouts.ts"
+export * from "./filters/complex-filter.ts"

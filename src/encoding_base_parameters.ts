@@ -8,6 +8,7 @@ export interface FFmpegBaseOptions {
   frameRate?: number;
   noAudio?: boolean;
   noVideo?: boolean;
+  noSubtitles?: boolean;
   sampleRate?: number;
   videoCodec?: string;
   start?: string;
@@ -109,6 +110,14 @@ export abstract class FFmpegBaseParameters<T extends FFmpegBaseOptions>
 
   set noAudio(disable: boolean) {
     this.opts.noAudio = disable;
+  }
+
+  get noSubtitles(): boolean {
+    return !!this.opts.noSubtitles;
+  }
+
+  set noSubtitles(disable: boolean) {
+    this.opts.noSubtitles = disable;
   }
 
   get start(): string | undefined {

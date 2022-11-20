@@ -10,6 +10,7 @@ import type {
   EncodingStartEventListener,
 } from "./events.ts";
 import { Resolution } from "./media_info.ts";
+import {ComplexFilter} from "./filters/complex-filter.ts";
 
 export function ffmpeg(
   input?: string,
@@ -126,7 +127,7 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
     return this;
   }
 
-  audioChannels(count: number): this {
+  audioChannels(count: number | undefined = undefined): this {
     this.encoding.audioChannels = count;
     return this;
   }
@@ -189,6 +190,16 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
     return this;
   }
 
+  noVideo(disable = true): this {
+    this.encoding.noVideo = disable;
+    return this;
+  }
+
+  noInputVideo(disable = true): this {
+    this.encoding.inputOptions.noVideo = disable;
+    return this;
+  }
+
   noAudio(disable = true): this {
     this.encoding.noAudio = disable;
     return this;
@@ -199,13 +210,13 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
     return this;
   }
 
-  noVideo(disable = true): this {
-    this.encoding.noVideo = disable;
+  noSubtitles(disable = true): this {
+    this.encoding.noSubtitles = disable;
     return this;
   }
 
-  noInputVideo(disable = true): this {
-    this.encoding.inputOptions.noVideo = disable;
+  noInputSubtitles(disable = true): this {
+    this.encoding.inputOptions.noSubtitles = disable;
     return this;
   }
 
@@ -305,6 +316,14 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
     return this;
   }
 
+  filter(filter: ComplexFilter): FFmpeg {
+    this.encoding.complexFilter = filter.buildFilterString();
+    return filter.apply(this);
+  }
+
+  ignoreSubtitles(ignore: boolean = true) {
+    // this
+  }
   // Methods:
 
   addEventListener(
@@ -336,7 +355,7 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
     return this;
   }
 
-  setResolution(resolution: Resolution): this {
+  resolution(resolution: Resolution): this {
     if (resolution === Resolution.HD7680p) {
       this.encoding.width = 7680;
       this.encoding.height = 4320;

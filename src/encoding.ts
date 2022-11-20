@@ -47,6 +47,7 @@ export class Encoding extends AbstractFFmpegOutputParameters {
   #input: FFmpegInputParameters = new FFmpegInputParameters();
   #output: FFmpegOutputParameters = new FFmpegOutputParameters();
   #eventListeners: Array<EncodingEventListenerItem> = [];
+  #complexFilter?: string;
 
   constructor(options: EncodingOptions = {}) {
     super();
@@ -119,6 +120,14 @@ export class Encoding extends AbstractFFmpegOutputParameters {
 
   set logLevel(logLevel: string | undefined) {
     this.#options.logLevel = logLevel;
+  }
+
+  set complexFilter(filter: string | undefined) {
+    this.#complexFilter = filter;
+  }
+
+  get complexFilter(): string | undefined {
+    return this.#complexFilter;
   }
 
   merge(encoding: Encoding): this {
