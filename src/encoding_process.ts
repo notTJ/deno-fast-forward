@@ -23,14 +23,14 @@ import { Deferred, deferred, iterateReader } from "./deps.ts";
 export type EncodingStatus = Deno.ProcessStatus;
 
 export class EncodingProcess {
-  #encoding: Encoding;
+  readonly #encoding: Encoding;
   #process?: Deno.Process;
   #infoPromise?: Promise<MediaInfo | void>;
   #statusPromise?: Promise<EncodingStatus>;
   #outputPromise?: Promise<Uint8Array>;
   #stderrOutputPromise?: Promise<Uint8Array>;
   #progressPromise?: Deferred<void>;
-  #eventIterator: EncodingEventStream;
+  readonly #eventIterator: EncodingEventStream;
   #cmd?: Array<string>;
 
   constructor(encoding: Encoding) {

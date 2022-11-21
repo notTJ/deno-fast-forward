@@ -14,15 +14,13 @@ export class FFmpegInputParameters
     super(options);
   }
 
-  clone(): FFmpegInputParameters {
-    return new FFmpegInputParameters().merge(this);
+  merge(parameters: this): this {
+    Object.assign(this.options, parameters.options);
+    return this;
   }
 
-  get options(): FFmpegInputOptions {
-    return this.opts;
-  }
-
-  set options(options: FFmpegInputOptions) {
-    this.opts = options;
+  rebase(parameters: this): this {
+    Object.assign(this.options, parameters.options, this.options);
+    return this;
   }
 }
