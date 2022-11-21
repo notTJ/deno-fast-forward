@@ -1,9 +1,9 @@
-import { FFmpeg, ffmpeg } from '../mod.ts';
+import { FFmpeg } from '../mod.ts';
 export type FFmpegAction = ((ffmpeg: FFmpeg) => FFmpeg);
+
 export abstract class ComplexFilter {
   protected readonly filter: string;
-  readonly actions: FFmpegAction[] = [];
-  // protected readonly empty: boolean = true;
+  protected readonly actions: FFmpegAction[] = [];
 
   protected constructor(filter: string) {
     this.filter = filter;
