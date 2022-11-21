@@ -10,7 +10,7 @@ import type {
   EncodingStartEventListener,
 } from "./events.ts";
 import { Resolution } from "./media_info.ts";
-import {ComplexFilter} from "./filters/complex-filter.ts";
+import { ComplexFilter } from "./filters/complex-filter.ts";
 
 export function ffmpeg(
   input?: string,
@@ -317,7 +317,9 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
   }
 
   filter(filter: ComplexFilter): FFmpeg {
-    if (this.encoding.complexFilter) throw Error('Adding more than 1 filter not supported')
+    if (this.encoding.complexFilter) {
+      throw Error("Adding more than 1 filter not supported");
+    }
     this.encoding.complexFilter = filter.buildFilterString();
     return filter.apply(this);
   }

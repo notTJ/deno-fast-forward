@@ -1,5 +1,5 @@
-import { FFmpeg } from '../mod.ts';
-export type FFmpegAction = ((ffmpeg: FFmpeg) => FFmpeg);
+import { FFmpeg } from "../mod.ts";
+export type FFmpegAction = (ffmpeg: FFmpeg) => FFmpeg;
 
 export abstract class ComplexFilter {
   protected readonly filter: string;
@@ -13,7 +13,7 @@ export abstract class ComplexFilter {
   //   return `[${index}}:${type === 'audio' ? 'a' : 'v'}]`;
   // }
   apply(ffmpeg: FFmpeg): FFmpeg {
-    this.actions.forEach((action) => ffmpeg = action(ffmpeg))
+    this.actions.forEach((action) => ffmpeg = action(ffmpeg));
     return ffmpeg;
   }
 

@@ -11,7 +11,7 @@ export * from "./ffmpeg.ts";
 export * from "./ffmpeg_command.ts";
 export * from "./ffprobe.ts";
 export * from "./media_info.ts";
-export * from "./filters/complex-filter.ts"
-export * from "./filters/channel/channel.ts"
-export * from "./filters/channel/channel-layout.ts"
-export * from "./filters/channel/channel-layout-map.ts"
+export * from "./filters/complex-filter.ts";
+export * from "./filters/channel/channel.ts";
+export * from "./filters/channel/channel-layout.ts";
+export * from "./filters/channel/channel-layout-map.ts";

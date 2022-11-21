@@ -12,7 +12,7 @@ export interface FFmpegBaseOptions {
   sampleRate?: number;
   videoCodec?: string;
   start?: string;
-  end?:  string;
+  end?: string;
 }
 
 /** input & output parameters */
@@ -24,11 +24,11 @@ export abstract class FFmpegBaseParameters<T extends FFmpegBaseOptions>
     this.opts = opts;
   }
 
-  protected get options(): T {
+  get options(): T {
     return this.opts;
   }
 
-  protected set options(options: T) {
+  set options(options: T) {
     this.opts = options;
   }
 

@@ -34,8 +34,9 @@ export class FFmpegCommand {
       this.#args.push(encoding.output);
     }
 
-    if (encoding.complexFilter)
-      this.#args.push("-filter_complex", encoding.complexFilter)
+    if (encoding.complexFilter) {
+      this.#args.push("-filter_complex", encoding.complexFilter);
+    }
   };
 
   #setInputOptions = (options: FFmpegInputParameters) => {
@@ -91,7 +92,7 @@ export class FFmpegCommand {
 
   #setBaseOptions = (options: FFmpegBaseParameters<FFmpegBaseOptions>) => {
     if (options.audioChannels) {
-      this.#args.push("-ac", options.audioChannels?.toString() ?? '');
+      this.#args.push("-ac", options.audioChannels?.toString() ?? "");
     }
     if (options.audioCodec) {
       this.#args.push("-acodec", options.audioCodec);

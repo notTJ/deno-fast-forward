@@ -1,6 +1,5 @@
 import { FFmpegInputParameters } from "./encoding_input_parameters.ts";
 import {
-  AbstractFFmpegOutputParameters,
   FFmpegOutputOptions,
   FFmpegOutputParameters,
 } from "./encoding_output_parameters.ts";
@@ -34,7 +33,7 @@ export interface EncodingOptions {
   threads?: number;
 }
 
-export class Encoding extends AbstractFFmpegOutputParameters {
+export class Encoding extends FFmpegOutputParameters {
   #options: EncodingOptions & {
     binary: string;
     input: string;
@@ -52,18 +51,6 @@ export class Encoding extends AbstractFFmpegOutputParameters {
   constructor(options: EncodingOptions = {}) {
     super();
     Object.assign(this.#options, options);
-  }
-
-  protected get opts(): FFmpegOutputOptions {
-    return this.#output.options;
-  }
-
-  protected set opts(options: FFmpegOutputOptions) {
-    this.#output.options = options;
-  }
-
-  get options(): EncodingOptions {
-    return this.#options;
   }
 
   get inputOptions(): FFmpegInputParameters {

@@ -21,7 +21,7 @@ export interface FFmpegOutputOptions extends FFmpegBaseOptions {
 }
 
 /** output parameters */
-export abstract class FFmpegOutputParameters
+export class FFmpegOutputParameters
   extends FFmpegBaseParameters<FFmpegOutputOptions>
   implements FFmpegOutputOptions {
   protected constructor(options: FFmpegOutputOptions = {}) {
