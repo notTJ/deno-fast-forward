@@ -216,6 +216,7 @@ export class EncodingProcess {
       this.#progressPromise.resolve();
       return;
     }
+    // console.log(info);
     const videoStream: VideoStream = info.streams
       .find((stream: MediaStream) =>
         stream.codec_type === "video"

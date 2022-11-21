@@ -1,0 +1,64 @@
+{
+  "tasks": { },
+  "compilerOptions": {
+    "allowJs": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
+    "checkJs": false,
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "jsxFragmentFactory": "React.Fragment",
+    "lib": [ "deno.window", "dom.asynciterable" ],
+    "noFallthroughCasesInSwitch": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitUseStrict": false,
+    "noStrictGenericChecks": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noUncheckedIndexedAccess": false,
+    "reactNamespace": "React",
+    "removeComments": false,
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "suppressExcessPropertyErrors": false,
+    "suppressImplicitAnyIndexErrors": false,
+    "useUnknownInCatchVariables": false
+  },
+  "importMap": "import_map.json",
+  "lint": {
+    "files": {
+      "include": ["src/"],
+      "exclude": [""]
+    },
+    "rules": {
+      "tags": ["recommended"],
+      "include": ["ban-untagged-todo"],
+      "exclude": ["no-unused-vars"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": ["src/"],
+      "exclude": []
+    },
+    "options": {
+      "useTabs": false,
+      "lineWidth": 80,
+      "indentWidth": 2,
+      "singleQuote": false,
+      "proseWrap": "preserve"
+    }
+  },
+  "test": {
+    "files": {
+      "include": ["src/"],
+      "exclude": []
+    }
+  }
+}

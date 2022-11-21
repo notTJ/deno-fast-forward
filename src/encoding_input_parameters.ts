@@ -9,6 +9,7 @@ export type FFmpegInputOptions = FFmpegBaseOptions;
 export class FFmpegInputParameters
   extends FFmpegBaseParameters<FFmpegInputOptions>
   implements FFmpegInputOptions {
+
   constructor(options: FFmpegInputOptions = {}) {
     super(options);
   }
