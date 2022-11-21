@@ -93,7 +93,7 @@ export class EncodingProcess {
       stdout: "piped",
       stderr: "piped",
     };
-    console.log(...this.#cmd);
+    // console.log(...this.#cmd);
     try {
       this.#process = Deno.run(opts);
     } catch (error) {

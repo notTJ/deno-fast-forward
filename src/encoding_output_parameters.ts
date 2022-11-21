@@ -138,28 +138,14 @@ export abstract class FFmpegOutputParameters
   // set rotate(deg: number | undefined) {
   //   this.opts.rotate = deg;
   // }
-}
 
-export class FFmpegOutputParameters extends AbstractFFmpegOutputParameters {
-  get options(): FFmpegOutputOptions {
-    return this.opts;
+  merge(parameters: this): this {
+    Object.assign(this.opts, parameters.opts);
+    return this;
   }
 
-  set options(options: FFmpegOutputOptions) {
-    this.opts = options;
-  }
-
-  // options(options: FFmpegOutputOptions): void;
-  // options(): FFmpegOutputOptions;
-  // options(options?: FFmpegOutputOptions): FFmpegOutputOptions | void {
-  //   if (options) {
-  //     Object.assign(this.opts, options);
-  //   } else {
-  //     return this.opts;
-  //   }
-  // }
-
-  clone(): FFmpegOutputParameters {
-    return new FFmpegOutputParameters().merge(this);
+  rebase(parameters: this): this {
+    Object.assign(this.opts, parameters.opts, this.opts);
+    return this;
   }
 }
