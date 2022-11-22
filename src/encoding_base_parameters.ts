@@ -18,18 +18,18 @@ export interface FFmpegBaseOptions {
 /** input & output parameters */
 export abstract class FFmpegBaseParameters<T extends FFmpegBaseOptions>
   implements FFmpegBaseOptions {
-  protected opts: T;
+  protected _opts: T;
 
   protected constructor(opts: T) {
-    this.opts = opts;
+    this._opts = opts;
   }
 
-  get options(): T {
-    return this.opts;
+  protected get opts(): T {
+    return this._opts;
   }
 
-  set options(options: T) {
-    this.opts = options;
+  protected set opts(options: T) {
+    this._opts = options;
   }
 
   get format(): string | undefined {
@@ -145,13 +145,13 @@ export abstract class FFmpegBaseParameters<T extends FFmpegBaseOptions>
   }
 
   // not overriding these methods in derived classes causes weird linting error
-  merge(parameters: this): this {
+  merge(parameters: this): FFmpegBaseParameters<T> {
     Object.assign(this.opts, parameters.opts);
     return this;
   }
 
   // merge<V extends T = T>(parameters: FFmpegBaseParameters<V>): FFmpegBaseParameters<T & V> {
-  rebase(parameters: this): this {
+  rebase(parameters: this): FFmpegBaseParameters<T> {
     Object.assign(this.opts, parameters.opts, this.opts);
     return this;
   }

@@ -28,6 +28,14 @@ export class FFmpegOutputParameters
     super(options);
   }
 
+  get options(): FFmpegOutputOptions {
+    return this.opts;
+  }
+
+  set options(options: FFmpegOutputOptions) {
+    this.opts = options;
+  }
+
   get override(): boolean | undefined {
     return this.opts.override;
   }
@@ -132,20 +140,11 @@ export class FFmpegOutputParameters
     this.opts.end = end;
   }
   // get rotate(): number | undefined {
-  //   return this.opts.rotate;
+  //   return this.options.rotate;
   // }
   //
   // set rotate(deg: number | undefined) {
-  //   this.opts.rotate = deg;
+  //   this.options.rotate = deg;
   // }
-
-  merge(parameters: this): this {
-    Object.assign(this.opts, parameters.opts);
-    return this;
-  }
-
-  rebase(parameters: this): this {
-    Object.assign(this.opts, parameters.opts, this.opts);
-    return this;
-  }
 }
+

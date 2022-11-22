@@ -53,6 +53,14 @@ export class Encoding extends FFmpegOutputParameters {
     Object.assign(this.#options, options);
   }
 
+  protected get opts(): FFmpegOutputOptions {
+    return this.#output.options;
+  }
+
+  protected set opts(options: FFmpegOutputOptions) {
+    this.#output.options = options;
+  }
+
   get inputOptions(): FFmpegInputParameters {
     return this.#input;
   }

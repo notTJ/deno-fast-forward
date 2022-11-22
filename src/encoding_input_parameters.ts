@@ -13,13 +13,11 @@ export class FFmpegInputParameters
     super(options);
   }
 
-  merge(parameters: this): this {
-    Object.assign(this.options, parameters.options);
-    return this;
+  get options(): FFmpegInputOptions {
+    return this.opts;
   }
 
-  rebase(parameters: this): this {
-    Object.assign(this.options, parameters.options, this.options);
-    return this;
+  set options(options: FFmpegInputOptions) {
+    this.opts = options;
   }
 }
