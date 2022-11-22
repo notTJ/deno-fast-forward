@@ -1,5 +1,3 @@
-import { Channel } from "./channel.ts";
-
 export const enum ChannelLayout {
   "mono" = "mono",
   "stereo" = "stereo",

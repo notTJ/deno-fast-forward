@@ -19,7 +19,6 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noUncheckedIndexedAccess": false,
-    "reactNamespace": "React",
     "removeComments": false,
     "strict": true,
     "strictBindCallApply": true,

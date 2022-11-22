@@ -92,7 +92,7 @@ export class FFmpegCommand {
 
   #setBaseOptions = (options: FFmpegBaseParameters<FFmpegBaseOptions>) => {
     if (options.audioChannels) {
-      this.#args.push("-ac", options.audioChannels?.toString() ?? "");
+      this.#args.push("-ac", options.audioChannels.toString());
     }
     if (options.audioCodec) {
       this.#args.push("-acodec", options.audioCodec);
