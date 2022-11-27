@@ -124,21 +124,6 @@ export class FFmpegOutputParameters
     this.opts.loop = loop;
   }
 
-  get start(): string | undefined {
-    return this.opts.start;
-  }
-
-  set start(start: string | undefined) {
-    this.opts.start = start;
-  }
-
-  get end(): string | undefined {
-    return this.opts.end;
-  }
-
-  set end(end: string | undefined) {
-    this.opts.end = end;
-  }
   // get rotate(): number | undefined {
   //   return this.options.rotate;
   // }
@@ -147,4 +132,3 @@ export class FFmpegOutputParameters
   //   this.options.rotate = deg;
   // }
 }
-

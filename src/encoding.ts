@@ -18,6 +18,7 @@ import {
   EncodingStartEvent,
   EncodingStartEventListener,
 } from "./events.ts";
+import { MappedOutput } from "./filters/mapped-output.ts";
 
 interface EncodingEventListenerItem {
   type: EncodingEventType;
@@ -47,6 +48,7 @@ export class Encoding extends FFmpegOutputParameters {
   #output: FFmpegOutputParameters = new FFmpegOutputParameters();
   #eventListeners: Array<EncodingEventListenerItem> = [];
   #complexFilter?: string;
+  #mappedOutputs?: MappedOutput[];
 
   constructor(options: EncodingOptions = {}) {
     super();
@@ -123,6 +125,14 @@ export class Encoding extends FFmpegOutputParameters {
 
   get complexFilter(): string | undefined {
     return this.#complexFilter;
+  }
+
+  set mappedOutputs(outputs: MappedOutput[] | undefined) {
+    this.#mappedOutputs = outputs;
+  }
+
+  get mappedOutputs(): MappedOutput[] | undefined {
+    return this.#mappedOutputs;
   }
 
   merge(encoding: Encoding): this {

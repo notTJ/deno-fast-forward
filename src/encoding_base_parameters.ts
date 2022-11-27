@@ -120,22 +120,6 @@ export abstract class FFmpegBaseParameters<T extends FFmpegBaseOptions>
     this.opts.noSubtitles = disable;
   }
 
-  get start(): string | undefined {
-    return this.opts.start;
-  }
-
-  set start(start: string | undefined) {
-    this.opts.start = start;
-  }
-
-  get end(): string | undefined {
-    return this.opts.end;
-  }
-
-  set end(end: string | undefined) {
-    this.opts.end = end;
-  }
-
   get args(): string[] | undefined {
     return this.opts.args;
   }

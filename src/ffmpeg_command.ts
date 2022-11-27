@@ -30,16 +30,27 @@ export class FFmpegCommand {
       this.#args.push("-loglevel", encoding.logLevel);
     }
     this.#setOutputOptions(encoding.outputOptions);
-    if (encoding.output) {
-      this.#args.push(encoding.output);
-    }
 
     if (encoding.complexFilter) {
       this.#args.push("-filter_complex", encoding.complexFilter);
     }
+    // prioritize mapped outputs..?
+    if (encoding.mappedOutputs?.length ?? 0 > 0) {
+      encoding.mappedOutputs?.forEach((output) =>
+        this.#args.push("-map", output.identifier, output.filename)
+      );
+    } else if (encoding.output) {
+      this.#args.push(encoding.output);
+    }
   };
 
   #setInputOptions = (options: FFmpegInputParameters) => {
+    if (options.start) {
+      this.#args.push("-ss", options.start);
+    }
+    if (options.end) {
+      this.#args.push("-to", options.end);
+    }
     this.#setBaseOptions(options);
   };
 
@@ -123,12 +134,6 @@ export class FFmpegCommand {
     }
     if (options.videoCodec) {
       this.#args.push("-vcodec", options.videoCodec);
-    }
-    if (options.start) {
-      this.#args.push("-ss", options.start);
-    }
-    if (options.end) {
-      this.#args.push("-to", options.end);
     }
     if (options.args) {
       this.#args.push(...options.args);

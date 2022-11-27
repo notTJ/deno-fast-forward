@@ -11,6 +11,7 @@ import type {
 } from "./events.ts";
 import { Resolution } from "./media_info.ts";
 import { ComplexFilter } from "./filters/complex-filter.ts";
+import { MappedOutput } from "./filters/mapped-output.ts";
 
 export function ffmpeg(
   input?: string,
@@ -307,12 +308,12 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
   }
 
   start(start: string): this {
-    this.encoding.start = start;
+    this.encoding.inputOptions.start = start;
     return this;
   }
 
   end(end: string): this {
-    this.encoding.end = end;
+    this.encoding.inputOptions.end = end;
     return this;
   }
 
@@ -320,8 +321,15 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
     if (this.encoding.complexFilter) {
       throw Error("Adding more than 1 filter not supported");
     }
-    this.encoding.complexFilter = filter.buildFilterString();
+    // maybe invert
     return filter.apply(this);
+  }
+
+  mappedOutputs(outputs: MappedOutput[]): FFmpeg {
+    if (this.encoding.output) Error("choose output or mapped outputs");
+    this.#addEncoding();
+    this.encoding.mappedOutputs = outputs;
+    return this;
   }
 
   ignoreSubtitles(ignore: boolean = true) {
