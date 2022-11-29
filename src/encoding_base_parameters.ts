@@ -11,8 +11,8 @@ export interface FFmpegBaseOptions {
   noSubtitles?: boolean;
   sampleRate?: number;
   videoCodec?: string;
-  start?: string;
-  end?: string;
+  seek?: string;
+  to?: string;
 }
 
 /** input & output parameters */

@@ -10,8 +10,7 @@ import type {
   EncodingStartEventListener,
 } from "./events.ts";
 import { Resolution } from "./media_info.ts";
-import { ComplexFilter } from "./filters/complex-filter.ts";
-import { MappedOutput } from "./filters/mapped-output.ts";
+import { MappedOutput } from "./mapped-output.ts";
 
 export function ffmpeg(
   input?: string,
@@ -307,22 +306,19 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
     return this;
   }
 
-  start(start: string): this {
-    this.encoding.inputOptions.start = start;
+  seek(start: string): this {
+    this.encoding.inputOptions.seek = start;
     return this;
   }
 
-  end(end: string): this {
-    this.encoding.inputOptions.end = end;
+  to(end: string): this {
+    this.encoding.outputOptions.to = end;
     return this;
   }
 
-  filter(filter: ComplexFilter): FFmpeg {
-    if (this.encoding.complexFilter) {
-      throw Error("Adding more than 1 filter not supported");
-    }
-    // maybe invert
-    return filter.apply(this);
+  complexFilter(filter: string): FFmpeg {
+    this.encoding.complexFilter = filter
+    return this;
   }
 
   mappedOutputs(outputs: MappedOutput[]): FFmpeg {

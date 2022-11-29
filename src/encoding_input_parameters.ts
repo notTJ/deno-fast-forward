@@ -21,19 +21,11 @@ export class FFmpegInputParameters
     this.opts = options;
   }
 
-  get start(): string | undefined {
-    return this.opts.start;
+  get seek(): string | undefined {
+    return this.opts.seek;
   }
 
-  set start(start: string | undefined) {
-    this.opts.start = start;
-  }
-
-  get end(): string | undefined {
-    return this.opts.end;
-  }
-
-  set end(end: string | undefined) {
-    this.opts.end = end;
+  set seek(start: string | undefined) {
+    this.opts.seek = start;
   }
 }

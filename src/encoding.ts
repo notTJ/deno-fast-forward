@@ -18,7 +18,7 @@ import {
   EncodingStartEvent,
   EncodingStartEventListener,
 } from "./events.ts";
-import { MappedOutput } from "./filters/mapped-output.ts";
+import { MappedOutput } from "./mapped-output.ts";
 
 interface EncodingEventListenerItem {
   type: EncodingEventType;

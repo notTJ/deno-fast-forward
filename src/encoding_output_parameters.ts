@@ -16,8 +16,7 @@ export interface FFmpegOutputOptions extends FFmpegBaseOptions {
   videoBitrate?: number | string;
   videoBufSize?: number | string;
   width?: number | string;
-  start?: string;
-  end?: string;
+  to?: string;
 }
 
 /** output parameters */
@@ -122,6 +121,14 @@ export class FFmpegOutputParameters
 
   set loop(loop: number | string | undefined) {
     this.opts.loop = loop;
+  }
+
+  get to(): string | undefined {
+    return this.opts.to;
+  }
+
+  set to(end: string | undefined) {
+    this.opts.to = end;
   }
 
   // get rotate(): number | undefined {
