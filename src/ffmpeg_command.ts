@@ -45,11 +45,8 @@ export class FFmpegCommand {
   };
 
   #setInputOptions = (options: FFmpegInputParameters) => {
-    if (options.start) {
-      this.#args.push("-ss", options.start);
-    }
-    if (options.end) {
-      this.#args.push("-to", options.end);
+    if (options.seek) {
+      this.#args.push("-ss", options.seek);
     }
     this.#setBaseOptions(options);
   };
@@ -98,6 +95,9 @@ export class FFmpegCommand {
     // if (options.rotate) {
     //   this.#args.push("-metadata:s:v", `rotate=${options.rotate.toString()}`);
     // }
+    if (options.to) {
+      this.#args.push("-to", options.to);
+    }
     this.#setBaseOptions(options);
   };
 
