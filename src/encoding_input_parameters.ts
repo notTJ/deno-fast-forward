@@ -5,6 +5,8 @@ import {
 
 export interface FFmpegInputOptions extends FFmpegBaseOptions {
   to?: string;
+  // used with multi input...
+  input?: string;
 }
 
 /** input parameters */
@@ -35,7 +37,15 @@ export class FFmpegInputParameters
     return this.opts.to;
   }
 
-  set to(end: string | undefined) {
-    this.opts.to = end;
+  set to(input: string | undefined) {
+    this.opts.input = input;
+  }
+
+  get input(): string | undefined {
+    return this.opts.input;
+  }
+
+  set input(input: string | undefined) {
+    this.opts.input = input;
   }
 }

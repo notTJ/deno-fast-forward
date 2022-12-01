@@ -86,6 +86,7 @@ export class EncodingProcess {
       this.#encoding,
       this.#isOutputStream(),
     ).toArray();
+    console.log(...this.#cmd);
     const opts: Deno.RunOptions = {
       cmd: this.#cmd,
       cwd: this.#encoding.cwd,
