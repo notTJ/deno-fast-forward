@@ -312,16 +312,16 @@ export class FFmpeg implements AsyncIterableIterator<EncodingProcess> {
   }
 
   to(end: string): this {
-    this.encoding.outputOptions.to = end;
+    this.encoding.inputOptions.to = end;
     return this;
   }
 
   complexFilter(filter: string): this {
-    this.encoding.complexFilter = filter
+    this.encoding.complexFilter = filter;
     return this;
   }
 
-  mappedOutputs(outputs: MappedOutput[]): this {
+  mappedOutputs(...outputs: MappedOutput[]): this {
     this.#addEncoding();
     this.encoding.mappedOutputs = outputs;
     return this;

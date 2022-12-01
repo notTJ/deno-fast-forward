@@ -3,7 +3,9 @@ import {
   FFmpegBaseParameters,
 } from "./encoding_base_parameters.ts";
 
-export type FFmpegInputOptions = FFmpegBaseOptions;
+export interface FFmpegInputOptions extends FFmpegBaseOptions {
+  to?: string;
+}
 
 /** input parameters */
 export class FFmpegInputParameters
@@ -27,5 +29,13 @@ export class FFmpegInputParameters
 
   set seek(start: string | undefined) {
     this.opts.seek = start;
+  }
+
+  get to(): string | undefined {
+    return this.opts.to;
+  }
+
+  set to(end: string | undefined) {
+    this.opts.to = end;
   }
 }

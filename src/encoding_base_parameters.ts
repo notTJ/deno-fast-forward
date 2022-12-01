@@ -1,3 +1,5 @@
+import { MappedOutput } from "./mapped-output.ts";
+
 export interface FFmpegBaseOptions {
   args?: string[];
   audioChannels?: number;
@@ -13,6 +15,8 @@ export interface FFmpegBaseOptions {
   videoCodec?: string;
   seek?: string;
   to?: string;
+  complexFilter?: string;
+  mappedOutputs?: MappedOutput[];
 }
 
 /** input & output parameters */
@@ -118,6 +122,22 @@ export abstract class FFmpegBaseParameters<T extends FFmpegBaseOptions>
 
   set noSubtitles(disable: boolean) {
     this.opts.noSubtitles = disable;
+  }
+
+  get complexFilter(): string | undefined {
+    return this.opts.complexFilter;
+  }
+
+  set complexFilter(complexFilter: string | undefined) {
+    this.opts.complexFilter = complexFilter;
+  }
+
+  get mappedOutputs(): MappedOutput[] | undefined {
+    return this.opts.mappedOutputs;
+  }
+
+  set mappedOutputs(mappedOutput: MappedOutput[] | undefined) {
+    this.opts.mappedOutputs = mappedOutput;
   }
 
   get args(): string[] | undefined {

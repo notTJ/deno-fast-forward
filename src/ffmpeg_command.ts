@@ -31,9 +31,6 @@ export class FFmpegCommand {
     }
     this.#setOutputOptions(encoding.outputOptions);
 
-    if (encoding.complexFilter) {
-      this.#args.push("-filter_complex", encoding.complexFilter);
-    }
     // prioritize mapped outputs..?
     if (encoding.mappedOutputs?.length ?? 0 > 0) {
       encoding.mappedOutputs?.forEach((output) =>
@@ -47,6 +44,9 @@ export class FFmpegCommand {
   #setInputOptions = (options: FFmpegInputParameters) => {
     if (options.seek) {
       this.#args.push("-ss", options.seek);
+    }
+    if (options.to) {
+      this.#args.push("-to", options.to);
     }
     this.#setBaseOptions(options);
   };
@@ -95,9 +95,6 @@ export class FFmpegCommand {
     // if (options.rotate) {
     //   this.#args.push("-metadata:s:v", `rotate=${options.rotate.toString()}`);
     // }
-    if (options.to) {
-      this.#args.push("-to", options.to);
-    }
     this.#setBaseOptions(options);
   };
 
@@ -135,6 +132,10 @@ export class FFmpegCommand {
     if (options.videoCodec) {
       this.#args.push("-vcodec", options.videoCodec);
     }
+    if (options.complexFilter) {
+      this.#args.push("-filter_complex", options.complexFilter);
+    }
+
     if (options.args) {
       this.#args.push(...options.args);
     }

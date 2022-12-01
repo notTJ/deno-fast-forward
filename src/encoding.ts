@@ -47,8 +47,6 @@ export class Encoding extends FFmpegOutputParameters {
   #input: FFmpegInputParameters = new FFmpegInputParameters();
   #output: FFmpegOutputParameters = new FFmpegOutputParameters();
   #eventListeners: Array<EncodingEventListenerItem> = [];
-  #complexFilter?: string;
-  #mappedOutputs?: MappedOutput[];
 
   constructor(options: EncodingOptions = {}) {
     super();
@@ -120,19 +118,19 @@ export class Encoding extends FFmpegOutputParameters {
   }
 
   set complexFilter(filter: string | undefined) {
-    this.#complexFilter = filter;
+    this.opts.complexFilter = filter;
   }
 
   get complexFilter(): string | undefined {
-    return this.#complexFilter;
+    return this.opts.complexFilter;
   }
 
   set mappedOutputs(outputs: MappedOutput[] | undefined) {
-    this.#mappedOutputs = outputs;
+    this.opts.mappedOutputs = outputs;
   }
 
   get mappedOutputs(): MappedOutput[] | undefined {
-    return this.#mappedOutputs;
+    return this.opts.mappedOutputs;
   }
 
   merge(encoding: Encoding): this {
