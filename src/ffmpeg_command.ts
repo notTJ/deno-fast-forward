@@ -18,15 +18,8 @@ export class FFmpegCommand {
 
   #setOptions = (encoding: Encoding, silent?: boolean) => {
     this.#args.push(encoding.binary, "-hide_banner");
-    if (encoding.multiInputOptions.length > 0) {
-      encoding.multiInputOptions.forEach(inputOptions => {
-        this.#setInputOptions(inputOptions);
-        this.#args.push("-i", encoding.input);
-      })
-    } else {
-      this.#setInputOptions(encoding.inputOptions);
-      this.#args.push("-i", encoding.input);
-    }
+    this.#setInputOptions(encoding.inputOptions);
+    this.#args.push("-i", encoding.input);
     if (!silent) {
       !silent && this.#args.push("-progress", "-", "-nostats");
     }
