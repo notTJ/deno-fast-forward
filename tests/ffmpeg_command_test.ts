@@ -1,6 +1,6 @@
 import { assertEquals } from "./dev_deps.ts";
-import { Encoding } from "./encoding.ts";
-import { FFmpegCommand } from "./ffmpeg_command.ts";
+import { Encoding } from "../src/encoding.ts";
+import { FFmpegCommand } from "../src/ffmpeg_command.ts";
 
 Deno.test({
   name: "ffmpeg command default options",
@@ -52,6 +52,8 @@ Deno.test({
     encoding.noAudio = true;
     encoding.noVideo = true;
     encoding.logLevel = "repeat+level+verbose";
+    encoding.complexFilter = "complexFilter"
+    encoding.mappedOutputs = [{ filename: "mapped-output.mp4", identifier: "[FC]" }]
     encoding.args = ["-custom"];
 
     const cmd: Array<string> = new FFmpegCommand(encoding).toArray();
@@ -103,8 +105,13 @@ Deno.test({
       "44100",
       "-vcodec",
       "copy",
+      "-filter_complex",
+      "complexFilter",
       "-custom",
       "output.mp4",
+      "-map",
+      "[FC]",
+      "mapped-output.mp4",
     ]);
   },
 });

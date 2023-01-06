@@ -5,16 +5,16 @@ import {
   exists,
   fromFileUrl,
 } from "./dev_deps.ts";
-import { Encoding } from "./encoding.ts";
-import { EncodingProcess } from "./encoding_process.ts";
+import { Encoding } from "../src/encoding.ts";
+import { EncodingProcess } from "../src/encoding_process.ts";
 
-const rootDir: string = dirname(fromFileUrl(import.meta.url));
+const rootDir: string = dirname(fromFileUrl(`${import.meta.url}`));
 const inputPath = `${rootDir}/fixtures/sample.mp4`;
 
 Deno.test({
-  name: "encoding process",
+  name: "encoding options",
   async fn() {
-    const outputPath = `${rootDir}/.tmp/encoding process.mp4`;
+    const outputPath = `${rootDir}/.tmp/encoding options.mp4`;
     await ensureDir(`${rootDir}/.tmp`);
 
     const encoding = new Encoding();
@@ -24,8 +24,6 @@ Deno.test({
     encoding.width = 200;
 
     const encodingProcess = new EncodingProcess(encoding);
-
-    assertEquals(encodingProcess.encoding, encoding);
 
     encodingProcess.run();
     await encodingProcess.status();

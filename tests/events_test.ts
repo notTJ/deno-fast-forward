@@ -11,8 +11,8 @@ import {
   EncodingEvent,
   EncodingInfoEvent,
   EncodingStartEvent,
-} from "./events.ts";
-import { FFmpeg } from "./ffmpeg.ts";
+} from "../src/events.ts";
+import { FFmpeg } from "../src/ffmpeg.ts";
 
 const rootDir: string = dirname(fromFileUrl(import.meta.url));
 const inputPath = `${rootDir}/fixtures/sample.mp4`;

@@ -5,9 +5,9 @@ import {
   dirname,
   fromFileUrl,
 } from "./dev_deps.ts";
-import { Encoding } from "./encoding.ts";
-import { EncodingEventStream } from "./encoding_event_stream.ts";
-import { EncodingProcess } from "./encoding_process.ts";
+import { Encoding } from "../src/encoding.ts";
+import { EncodingEventStream } from "../src/encoding_event_stream.ts";
+import { EncodingProcess } from "../src/encoding_process.ts";
 import {
   EncodingEventStreamAlreadyDisposed,
   EncodingProcessAlreadyStarted,
@@ -18,10 +18,10 @@ import {
   FFprobeBinaryNotFound,
   FFprobeBinaryPermissionDenied,
   FFprobeCommandFailed,
-} from "./errors.ts";
-import { EncodingErrorEvent } from "./events.ts";
-import { ffmpeg } from "./ffmpeg.ts";
-import { ffprobe } from "./ffprobe.ts";
+} from "../src/errors.ts";
+import { EncodingErrorEvent } from "../src/events.ts";
+import { ffmpeg } from "../src/ffmpeg.ts";
+import { ffprobe } from "../src/ffprobe.ts";
 
 const rootDir: string = dirname(fromFileUrl(import.meta.url));
 const inputPath = `${rootDir}/fixtures/sample.mp4`;

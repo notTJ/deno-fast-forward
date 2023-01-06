@@ -31,14 +31,12 @@ export class FFmpegCommand {
     }
     this.#setOutputOptions(encoding.outputOptions);
 
-    // prioritize mapped outputs..?
-    if (encoding.mappedOutputs?.length ?? 0 > 0) {
-      encoding.mappedOutputs?.forEach((output) =>
-        this.#args.push("-map", output.identifier, output.filename)
-      );
-    } else if (encoding.output) {
+    if (encoding.output) {
       this.#args.push(encoding.output);
     }
+    encoding.mappedOutputs?.forEach((output) =>
+      this.#args.push("-map", output.identifier, output.filename)
+    );
   };
 
   #setInputOptions = (options: FFmpegInputParameters) => {

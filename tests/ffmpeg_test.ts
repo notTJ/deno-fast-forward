@@ -7,9 +7,9 @@ import {
   fromFileUrl,
   MuxAsyncIterator,
 } from "./dev_deps.ts";
-import { Encoding } from "./encoding.ts";
-import { EncodingProcess } from "./encoding_process.ts";
-import { FFmpeg, ffmpeg } from "./ffmpeg.ts";
+import { Encoding } from "../src/encoding.ts";
+import { EncodingProcess } from "../src/encoding_process.ts";
+import { FFmpeg, ffmpeg } from "../src/ffmpeg.ts";
 
 const rootDir: string = dirname(fromFileUrl(import.meta.url));
 const inputPath = `${rootDir}/fixtures/sample.mp4`;

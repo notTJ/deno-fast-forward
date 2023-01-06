@@ -6,17 +6,17 @@ import {
   exists,
   fromFileUrl,
 } from "./dev_deps.ts";
-import { Encoding } from "./encoding.ts";
-import { EncodingProcess } from "./encoding_process.ts";
-import { EncodingEventStream } from "./encoding_event_stream.ts";
+import { Encoding } from "../src/encoding.ts";
+import { EncodingProcess } from "../src/encoding_process.ts";
+import { EncodingEventStream } from "../src/encoding_event_stream.ts";
 import {
   EncodingEndEvent,
   EncodingErrorEvent,
   EncodingInfoEvent,
   EncodingStartEvent,
-} from "./events.ts";
-import { EncodingProgressEvent } from "./events.ts";
-import { FFmpeg } from "./ffmpeg.ts";
+} from "../src/events.ts";
+import { EncodingProgressEvent } from "../src/events.ts";
+import { FFmpeg } from "../src/ffmpeg.ts";
 
 const rootDir: string = dirname(fromFileUrl(import.meta.url));
 const inputPath = `${rootDir}/fixtures/sample.mp4`;
