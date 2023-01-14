@@ -11,15 +11,17 @@ export const GenericOptions = [
   CreateOption({
     name: "help",
     description: "Show Help",
-    cli: ["-h", "-?", "-help"],
+    cli: "-h", // ["-h", "-?", "-help"],
   }),
   CreateOptionWithParameter({
     name: "help (long)",
     description: "Show Help",
     cli: "-help",
-    parameterName: "args",
-    parameterType: "string",
-    valueRequired: false,
+    parameter: {
+      name: "args",
+      type: "string",
+      valueRequired: false,
+    },
   }),
   CreateOption({
     name: "version",
@@ -110,29 +112,37 @@ export const GenericOptions = [
     name: "sources",
     description: "Show autodetected sources of the input device.",
     cli: "sources",
-    parameterName: "sources",
-    parameterType: "string",
+    parameter: {
+      name: "sources",
+      type: "string",
+    },
   }),
   CreateOptionWithParameter({
     name: "sinks",
     description: "Show autodetected sinks of the output device.",
     cli: "sinks",
-    parameterName: "sinks",
-    parameterType: "string",
+    parameter: {
+      name: "sinks",
+      type: "string",
+    },
   }),
   CreateOptionWithParameter({
     name: "log level",
     description: "Set logging level and flags used by the library.",
     cli: "loglevel",
-    parameterName: "loglevel",
-    parameterType: "string",
+    parameter: {
+      name: "loglevel",
+      type: "string",
+    },
   }),
   CreateOptionWithParameter({
     name: "report",
     description: "Dump full command line and log output.",
     cli: "report",
-    parameterName: "report",
-    parameterType: "string",
+    parameter: {
+      name: "report",
+      type: "string",
+    },
   }),
   CreateOption({
     name: "hide banner",
@@ -145,17 +155,20 @@ export const GenericOptions = [
     scope: "global",
     // optionType: "parameter",
     cli: "cpuflags",
-    parameterType: "string",
-    parameterName: "flags",
+    parameter: {
+      type: "string",
+      name: "flags",
+    },
   }),
   CreateOptionWithParameter({
     name: "cpu count",
     description: "Override detection of CPU count.",
     scope: "global",
     cli: "cpucount",
-    parameterType: "integer",
-    parameterName: "cpucount",
-    default: 2,
+    parameter: {
+      type: "integer",
+      name: "cpucount",
+    },
   }),
   CreateOptionWithParameter({
     name: "max alloc",
@@ -163,8 +176,9 @@ export const GenericOptions = [
       "Set the maximum size limit for allocating a block on the heap by ffmpeg’s family of malloc functions.",
     scope: "global",
     cli: "max_alloc",
-    parameterType: "integer",
-    parameterName: "maxAlloc",
-    default: Number.MAX_SAFE_INTEGER, // Default is INT_MAX. (check values)
+    parameter: {
+      type: "integer",
+      name: "maxAlloc",
+    },
   }),
 ];

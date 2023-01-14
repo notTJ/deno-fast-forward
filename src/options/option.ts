@@ -2,8 +2,19 @@ export interface Option {
   name: string;
   description: string;
   scope: Scope;
-  cli: string | string[];
   specifier: Specifier;
+  cli: string;
+}
+
+export interface OptionWithParameter extends Option {
+  parameter: Parameter;
+}
+
+export interface Parameter {
+  name: string;
+  type: ParameterType;
+  default?: any;
+  valueRequired?: boolean; // default to true
 }
 
 export type Scope =
@@ -28,13 +39,6 @@ export type ParameterType =
 
 export type Specifier = "single" | "per-stream" | "per-metadata" | "index";
 
-export interface OptionWithParameter extends Option {
-  parameterName: string;
-  parameterType: ParameterType;
-  default?: any;
-  valueRequired?: boolean; // default to true
-}
-
 export function CreateOption(option: Partial<Option>): Option {
   option.name = option.name!;
   option.description = option.description ?? "";
@@ -47,10 +51,16 @@ export function CreateOption(option: Partial<Option>): Option {
 export function CreateOptionWithParameter(
   option: Partial<OptionWithParameter>,
 ): Option {
-  option.parameterName = option.parameterName!;
-  option.parameterType = option.parameterType!;
-  option.valueRequired = option.valueRequired ?? true;
+  option.parameter = CreateParameter(option.parameter!);
   return CreateOption(option);
+}
+
+export function CreateParameter(parameter: Partial<Parameter>): Parameter {
+  parameter.name = parameter!.name!;
+  parameter.type = parameter!.type!;
+  parameter.valueRequired = parameter!.valueRequired ?? true;
+  parameter.default = parameter!.default;
+  return parameter as Parameter;
 }
 export function IsOptionWithParameter(
   option: Option | Partial<Option>,

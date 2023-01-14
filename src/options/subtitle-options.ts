@@ -8,8 +8,7 @@ export const SubtitleOptions = [
     description: "Set the subtitle codec.",
     scope: "input-output",
     cli: "scodec",
-    parameterType: "string",
-    parameterName: "codec",
+    parameter: { type: "string", name: "codec" },
   }),
 
   CreateOption({
@@ -29,7 +28,6 @@ export const SubtitleOptions = [
     name: "subtitle canvas size",
     description: "Set the size of the canvas used to render subtitles.",
     cli: "canvas_size",
-    parameterType: "string",
-    parameterName: "size",
+    parameter: { type: "string", name: "size" },
   }),
 ];
