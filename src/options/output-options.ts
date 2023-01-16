@@ -1,6 +1,6 @@
-import { FFMpegInputOutputOptions } from "./ffmpeg-input-output-options.ts";
+import { InputOutputOptions } from "./input-output-options.ts";
 
-export interface FFMpegOutputOptions extends FFMpegInputOutputOptions {
+export interface OutputOptions extends InputOutputOptions {
   // main
   fs: number;
   timestamp: string;

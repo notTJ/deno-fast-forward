@@ -1,5 +1,5 @@
 // shared by both input and output options
-export interface FFMpegInputOutputOptions {
+export interface InputOutputOptions {
   // main
   f: string;
   c: string;

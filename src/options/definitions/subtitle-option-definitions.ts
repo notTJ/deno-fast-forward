@@ -1,9 +1,9 @@
-import { CreateOption, CreateOptionWithParameter } from "./option.ts";
+import { createOption, createOptionWithParameter } from "../option.ts";
 
 // https://ffmpeg.org/ffmpeg.html#Subtitle-options
 // https://ffmpeg.org/ffmpeg.html#Advanced-Subtitle-options
-export const SubtitleOptions = [
-  CreateOptionWithParameter({
+export const SubtitleOptionDefinitions = [
+  createOptionWithParameter({
     name: "subtitle codec",
     description: "Set the subtitle codec.",
     scope: "input-output",
@@ -11,7 +11,7 @@ export const SubtitleOptions = [
     parameter: { type: "string", name: "codec" },
   }),
 
-  CreateOption({
+  createOption({
     name: "no subtitle streams",
     description: "blocks subtitle streams from being selected or recorded",
     scope: "input-output",
@@ -19,12 +19,12 @@ export const SubtitleOptions = [
   }),
   // -ssbf deprecated, see -bsf
   // advanced options
-  CreateOption({
+  createOption({
     name: "fix subtitle durations",
     description: "Stop writing the output or reading the input at position.",
     cli: "fix_sub_duration",
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "subtitle canvas size",
     description: "Set the size of the canvas used to render subtitles.",
     cli: "canvas_size",

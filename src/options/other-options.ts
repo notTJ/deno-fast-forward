@@ -1,7 +1,7 @@
 // keys matching cli arg
 // options with unspecified scope (input, output, global)
 // assuming global is probably safe
-export interface FfmpegOtherOptions {
+export interface OtherOptions {
   // Main
   stdin: boolean;
   // Video + Advanced Video

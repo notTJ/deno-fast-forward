@@ -1,19 +1,19 @@
-import { CreateOption, CreateOptionWithParameter } from "./option.ts";
+import { createOption, createOptionWithParameter } from "../option.ts";
 
 // shared amongst ff* tools
 // https://ffmpeg.org/ffmpeg.html#Generic-options
-export const GenericOptions = [
-  CreateOption({
+export const GenericOptionDefinitions = [
+  createOption({
     name: "license",
     description: "Show license",
     cli: "L",
   }),
-  CreateOption({
+  createOption({
     name: "help",
     description: "Show Help",
     cli: "-h", // ["-h", "-?", "-help"],
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "help (long)",
     description: "Show Help",
     cli: "-help",
@@ -23,92 +23,92 @@ export const GenericOptions = [
       valueRequired: false,
     },
   }),
-  CreateOption({
+  createOption({
     name: "version",
     description: "Show version.",
     cli: "version",
   }),
-  CreateOption({
+  createOption({
     name: "buildConfiguration",
     description: "Show the build configuration, one option per line.",
     cli: "buildconf",
   }),
-  CreateOption({
+  createOption({
     name: "format",
     description: "Show available formats (including devices).",
     cli: "formats",
   }),
-  CreateOption({
+  createOption({
     name: "demuxers",
     description: "Show available demuxers.",
     cli: "demuxers",
   }),
-  CreateOption({
+  createOption({
     name: "muxers",
     description: "Show available muxers.",
     cli: "muxers",
   }),
-  CreateOption({
+  createOption({
     name: "devices",
     description: "Show available devices.",
     cli: "devices",
   }),
-  CreateOption({
+  createOption({
     name: "codecs",
     description: "Show all codecs known to libavcodec.",
     cli: "codecs",
   }),
-  CreateOption({
+  createOption({
     name: "decoders",
     description: "Show available decoders.",
     cli: "decoders",
   }),
-  CreateOption({
+  createOption({
     name: "encoders",
     description: "Show all available encoders.",
     cli: "encoders",
   }),
-  CreateOption({
+  createOption({
     name: "bitstream filters",
     description: "Show available bitstream filters.",
     cli: "bsfs",
   }),
-  CreateOption({
+  createOption({
     name: "filters",
     description: "Show available libavfilter filters.",
     cli: "filters",
   }),
-  CreateOption({
+  createOption({
     name: "protocols",
     description: "Show available protocols.",
     cli: "protocols",
   }),
-  CreateOption({
+  createOption({
     name: "pixel formats",
     description: "Show available pixel formats.",
     cli: "pix_fmts",
   }),
-  CreateOption({
+  createOption({
     name: "sample formats",
     description: "Show available sample formats.",
     cli: "sample_fmts",
   }),
-  CreateOption({
+  createOption({
     name: "channel layout names",
     description: "Show channel names and standard channel layouts.",
     cli: "layouts",
   }),
-  CreateOption({
+  createOption({
     name: "stream dispositions",
     description: "Show stream dispositions.",
     cli: "dispositions",
   }),
-  CreateOption({
+  createOption({
     name: "color names",
     description: "Show recognized color names.",
     cli: "colors",
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "sources",
     description: "Show autodetected sources of the input device.",
     cli: "sources",
@@ -117,7 +117,7 @@ export const GenericOptions = [
       type: "string",
     },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "sinks",
     description: "Show autodetected sinks of the output device.",
     cli: "sinks",
@@ -126,7 +126,7 @@ export const GenericOptions = [
       type: "string",
     },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "log level",
     description: "Set logging level and flags used by the library.",
     cli: "loglevel",
@@ -135,7 +135,7 @@ export const GenericOptions = [
       type: "string",
     },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "report",
     description: "Dump full command line and log output.",
     cli: "report",
@@ -144,12 +144,12 @@ export const GenericOptions = [
       type: "string",
     },
   }),
-  CreateOption({
+  createOption({
     name: "hide banner",
     description: "Suppress printing banner.",
     cli: "banner",
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "cpu flags",
     description: "Allows setting and clearing cpu flags.",
     scope: "global",
@@ -160,7 +160,7 @@ export const GenericOptions = [
       name: "flags",
     },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "cpu count",
     description: "Override detection of CPU count.",
     scope: "global",
@@ -170,7 +170,7 @@ export const GenericOptions = [
       name: "cpucount",
     },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "max alloc",
     description:
       "Set the maximum size limit for allocating a block on the heap by ffmpeg’s family of malloc functions.",

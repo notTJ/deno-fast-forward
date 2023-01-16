@@ -1,4 +1,4 @@
-export interface FFToolsGenericOptions {
+export interface ToolsGenericOptions {
   L: boolean;
   help: boolean;
   // long help
@@ -21,7 +21,7 @@ export interface FFToolsGenericOptions {
   colors: boolean;
   sources: boolean;
   sinks: boolean;
-  loglevel: boolean;
+  loglevel: string;
   report: boolean;
   level: boolean;
   cpuflags: string;

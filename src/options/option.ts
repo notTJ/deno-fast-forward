@@ -1,3 +1,5 @@
+import {createParameter, Parameter} from "../parameters/parameter.ts";
+
 export interface Option {
   name: string;
   description: string;
@@ -10,13 +12,6 @@ export interface OptionWithParameter extends Option {
   parameter: Parameter;
 }
 
-export interface Parameter {
-  name: string;
-  type: ParameterType;
-  default?: any;
-  valueRequired?: boolean; // default to true
-}
-
 export type Scope =
   | "global"
   | "input"
@@ -24,22 +19,9 @@ export type Scope =
   | "input-output"
   | "none";
 
-export type ParameterType =
-  | "string"
-  | "number"
-  | "integer"
-  | "float"
-  | "decimal"
-  | "index"
-  | "date"
-  | "time"
-  | "url"
-  | "time-duration"
-  | "complex";
-
 export type Specifier = "single" | "per-stream" | "per-metadata" | "index";
 
-export function CreateOption(option: Partial<Option>): Option {
+export function createOption(option: Partial<Option>): Option {
   option.name = option.name!;
   option.description = option.description ?? "";
   option.scope = option.scope ?? "none";
@@ -48,22 +30,15 @@ export function CreateOption(option: Partial<Option>): Option {
   return option as Option;
 }
 
-export function CreateOptionWithParameter(
+export function createOptionWithParameter(
   option: Partial<OptionWithParameter>,
 ): Option {
-  option.parameter = CreateParameter(option.parameter!);
-  return CreateOption(option);
+  option.parameter = createParameter(option.parameter!);
+  return createOption(option);
 }
 
-export function CreateParameter(parameter: Partial<Parameter>): Parameter {
-  parameter.name = parameter!.name!;
-  parameter.type = parameter!.type!;
-  parameter.valueRequired = parameter!.valueRequired ?? true;
-  parameter.default = parameter!.default;
-  return parameter as Parameter;
-}
-export function IsOptionWithParameter(
+export function isOptionWithParameter(
   option: Option | Partial<Option>,
 ): option is OptionWithParameter {
-  return (option && "parameterType" in option);
+  return (option && "parameter" in option);
 }

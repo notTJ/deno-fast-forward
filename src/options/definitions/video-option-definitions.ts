@@ -1,10 +1,10 @@
-import { CreateOption, CreateOptionWithParameter } from "./option.ts";
+import { createOption, createOptionWithParameter } from "../option.ts";
 
 // https://ffmpeg.org/ffmpeg.html#Main-options
 // https://ffmpeg.org/ffmpeg.html#Advanced-Video-options
-export const VideoOptions = [
+export const VideoOptionDefinitions = [
   // -vframes, deprecated for -frames:v
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "framerate",
     description: "Set frame rate (Hz value, fraction or abbreviation).",
     scope: "input-output",
@@ -12,7 +12,7 @@ export const VideoOptions = [
     cli: "framerate",
     parameter: { type: "string", name: "fps" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "max fps",
     description: "Set maximum frame rate (Hz value, fraction or abbreviation).",
     scope: "output",
@@ -20,7 +20,7 @@ export const VideoOptions = [
     cli: "fpsmax",
     parameter: { type: "string", name: "max-fps" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "frame size",
     description: "Set frame size.",
     scope: "input-output",
@@ -28,7 +28,7 @@ export const VideoOptions = [
     cli: "s",
     parameter: { type: "string", name: "size" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "aspect ratio",
     description: "Set the video display aspect ratio specified by aspect. ",
     scope: "output",
@@ -36,7 +36,7 @@ export const VideoOptions = [
     cli: "aspect",
     parameter: { type: "string", name: "aspect" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "video rotation metadata",
     description: "Set video rotation metadata.",
     scope: "input",
@@ -44,7 +44,7 @@ export const VideoOptions = [
     cli: "display_rotation",
     parameter: { type: "decimal", name: "rotation" },
   }),
-  CreateOption({
+  createOption({
     name: "horizontal flip",
     description:
       "Set whether on display the image should be horizontally flipped.",
@@ -52,7 +52,7 @@ export const VideoOptions = [
     cli: "display_hflip",
     specifier: "per-stream",
   }),
-  CreateOption({
+  createOption({
     name: "vertical flip",
     description:
       "Set whether on display the image should be vertically flipped.",
@@ -60,20 +60,20 @@ export const VideoOptions = [
     specifier: "per-stream",
     cli: "display_vflip",
   }),
-  CreateOption({
+  createOption({
     name: "no video",
     description: "Blocks video streams from being slected or recorded",
     scope: "input-output",
     cli: "vn",
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "video codec",
     description: "Set the video codec.",
     scope: "output",
     cli: "vcodec",
     parameter: { type: "string", name: "codec" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "pass",
     description: "Select the pass number (1 or 2).",
     scope: "input",
@@ -81,7 +81,7 @@ export const VideoOptions = [
     cli: "pass",
     parameter: { type: "integer", name: "n" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "pass log file",
     description:
       "Set two-pass log file name prefix to prefix, the default file name prefix is 'ffmpeg2pass'.",
@@ -90,7 +90,7 @@ export const VideoOptions = [
     cli: "passlogfile",
     parameter: { type: "string", name: "prefix" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "video filter",
     description:
       "Create the filtergraph specified by filtergraph and use it to filter the stream.",
@@ -98,13 +98,13 @@ export const VideoOptions = [
     cli: "vf", // alias for -filter:v
     parameter: { type: "string", name: "filtergraph" },
   }),
-  CreateOption({
+  createOption({
     name: "auto-rotate",
     description: "Automatically rotate the video according to file metadata.",
     scope: "output",
     cli: "autorotate",
   }),
-  CreateOption({
+  createOption({
     name: "auto-scale",
     description:
       "Automatically scale the video according to the resolution of first frame.",
@@ -112,21 +112,21 @@ export const VideoOptions = [
     cli: "autoscale",
   }),
   // advanced video options
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "pixel format",
     description: "Set pixel format.",
     scope: "input-output",
     specifier: "per-stream",
     cli: "pix_fmt",
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "SwScaler flags",
     description: "Set SwScaler flags.",
     scope: "input-output",
     cli: "sws_flags",
     parameter: { type: "string", name: "flags" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "rate control",
     description:
       'Rate control override for specific intervals, formatted as "int,int,int" list separated with slashes.',
@@ -135,35 +135,35 @@ export const VideoOptions = [
     cli: "rc_override",
     parameter: { type: "string", name: "override" },
   }),
-  CreateOption({
+  createOption({
     name: "force interlacing support",
     description:
       "Force interlacing support in encoder (MPEG-2 and MPEG-4 only).",
     cli: "ilme",
   }),
-  CreateOption({
+  createOption({
     name: "calculate PSNR",
     description: "Calculate PSNR of compressed frames.",
     cli: "psnr",
   }),
-  CreateOption({
+  createOption({
     name: "log video stats",
     description: "Dump video coding statistics to vstats_HHMMSS.log.",
     cli: "vstats",
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "log video stats to file",
     description: "Dump video coding statistics to file.",
     cli: "vstats_file",
     parameter: { type: "string", name: "filename" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "log video stats to file",
     description: "Dump video coding statistics to file.",
     cli: "vstats_version",
     parameter: { type: "string", name: "filename" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "top",
     description: "top=1/bottom=0/auto=-1 field first",
     scope: "output",
@@ -171,27 +171,27 @@ export const VideoOptions = [
     cli: "top",
     parameter: { type: "number", name: "n" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "dc precision",
     description: "Intra_dc_precision.",
     cli: "dc",
     parameter: { type: "string", name: "precision" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "video tag",
     description: "Force video tag/fourcc. This is an alias for -tag:v.",
     scope: "output",
     cli: "vtag",
     parameter: { type: "string", name: "fourcc/tag" },
   }),
-  CreateOption({
+  createOption({
     name: "QP histogram",
     description: "Show QP histogram",
     scope: "input",
     cli: "qphist",
   }),
   // deprecated: vbsf
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "force key frame",
     description: "",
     scope: "output",
@@ -199,7 +199,7 @@ export const VideoOptions = [
     cli: "force_key_frames",
     parameter: { type: "string", name: "parameter" },
   }),
-  CreateOption({
+  createOption({
     name: "copy inkf",
     description:
       "When doing stream copy, copy also non-key frames found at the beginning. ",
@@ -207,27 +207,27 @@ export const VideoOptions = [
     specifier: "per-stream",
     cli: "copyinkf",
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "init hardware device",
     description:
       "Initialise a new hardware device of type type called name, using the given device parameters.",
     cli: "init_hw_device",
     parameter: { type: "complex", name: "name" },
   }),
-  CreateOption({
+  createOption({
     name: "list init hw device",
     description:
       "List all hardware device types supported in this build of ffmpeg.",
     cli: "init_hw_device list",
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "filter hw device",
     description:
       "pass the hardware device called name to all filters in any filter graph.",
     cli: "filter_hw_device",
     parameter: { type: "string", name: "name" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "hardware accel",
     description: "Use hardware acceleration to decode the matching stream(s).",
     scope: "input",
@@ -235,7 +235,7 @@ export const VideoOptions = [
     cli: "hwaccel",
     parameter: { type: "string", name: "hwaccel" },
   }),
-  CreateOptionWithParameter({
+  createOptionWithParameter({
     name: "hardware accel device",
     description: "Select a device to use for hardware acceleration.",
     scope: "input",
@@ -243,7 +243,7 @@ export const VideoOptions = [
     cli: "hwaccel_device",
     parameter: { type: "string", name: "hwaccel_device" },
   }),
-  CreateOption({
+  createOption({
     name: "list hwaccel components",
     description:
       "List all hardware acceleration components enabled in this build of ffmpeg.",

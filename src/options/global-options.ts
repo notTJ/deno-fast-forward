@@ -1,6 +1,6 @@
 // keys match cli-arg for option matching
 // user-friendly naming should be put on the accessors & fluent functions
-export interface FFMpegGlobalOptions {
+export interface GlobalOptions {
   // main
   y: boolean;
   n: boolean;
