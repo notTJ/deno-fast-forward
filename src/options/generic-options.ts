@@ -1,4 +1,4 @@
-export interface ToolsGenericOptions {
+export interface GenericOptions {
   L: boolean;
   help: boolean;
   // long help

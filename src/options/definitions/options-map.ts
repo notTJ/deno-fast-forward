@@ -6,7 +6,7 @@ import { SubtitleOptionDefinitions } from "./subtitle-option-definitions.ts";
 import { AdvancedOptionDefinitions } from "./advanced-option-definitions.ts";
 import { Option } from "../option.ts";
 
-function createOptionsMap(): Map<string, Option> {
+export function createOptionDefinitionsMap(): Map<string, Option> {
   const map = new Map<string, Option>();
   GenericOptionDefinitions
     .concat(MainOptionDefinitions)
@@ -17,4 +17,4 @@ function createOptionsMap(): Map<string, Option> {
     .forEach((o) => map.set(o.cli, o));
   return map;
 }
-export const OptionsMap = createOptionsMap();
+export const OptionsMap = createOptionDefinitionsMap();

@@ -1,4 +1,6 @@
-import {createParameter, Parameter} from "../parameters/parameter.ts";
+import { createParameter, Parameter } from "../parameters/parameter.ts";
+import { OtherOptions } from "./other-options.ts";
+import { GenericOptions } from "./generic-options.ts";
 
 export interface Option {
   name: string;
@@ -41,4 +43,24 @@ export function isOptionWithParameter(
   option: Option | Partial<Option>,
 ): option is OptionWithParameter {
   return (option && "parameter" in option);
+}
+
+export function isGenericOptions(value: any): value is GenericOptions {
+  return (value && "L" in value);
+}
+
+export function isGlobalOptions(value: any): value is GenericOptions {
+  return (value && "y" in value);
+}
+
+export function isInputOptions(value: any): value is GenericOptions {
+  return (value && "i" in value);
+}
+
+export function isOutputOptions(value: any): value is GenericOptions {
+  return (value && "fs" in value);
+}
+
+export function isOtherOptions(value: any): value is OtherOptions {
+  return (value && "stdin" in value);
 }
