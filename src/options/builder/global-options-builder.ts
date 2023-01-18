@@ -2,7 +2,7 @@ import { GlobalOptions } from "../global-options.ts";
 import { OptionsBuilder, OptionsBuilderType } from "./options-builder.ts";
 
 export class GlobalOptionsBuilder extends OptionsBuilder<GlobalOptions> {
-  override options: Partial<GlobalOptions> = {};
+  override options: GlobalOptions = {};
   override type: OptionsBuilderType = "global";
   // main
   y(enable: boolean = true): this {
@@ -19,6 +19,10 @@ export class GlobalOptionsBuilder extends OptionsBuilder<GlobalOptions> {
   }
   filter(filter: number): this {
     this.options.filter = filter;
+    return this;
+  }
+  filter_threads(filter: number): this {
+    this.options.filterThreads = filter;
     return this;
   }
   stats(enable: boolean = true): this {

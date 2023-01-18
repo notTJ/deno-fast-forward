@@ -1,11 +1,14 @@
 import { InputOutputOptions } from "../input-output-options.ts";
-import {OptionsBuilder, OptionsBuilderType} from "./options-builder.ts";
+import { OptionsBuilder, OptionsBuilderType } from "./options-builder.ts";
 
-export class InputOutputOptionsBuilder
+export class InputOutputOptionsBuilder<T extends InputOutputOptions>
   extends OptionsBuilder<InputOutputOptions> {
-  // these shouldn't be called
-  override options: Partial<InputOutputOptions> = {};
-  override type: OptionsBuilderType = "input";
+  override options: InputOutputOptions = {};
+  override type: OptionsBuilderType = "input-output";
+  constructor() {
+    super();
+    throw new Error("Not implemented");
+  }
 
   // main
   f(value: string): this {

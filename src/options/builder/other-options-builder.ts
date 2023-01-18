@@ -2,7 +2,7 @@ import { OptionsBuilder, OptionsBuilderType } from "./options-builder.ts";
 import { OtherOptions } from "../other-options.ts";
 
 export class OtherOptionsBuilder extends OptionsBuilder<OtherOptions> {
-  override options: Partial<OtherOptions> = {};
+  override options: OtherOptions = {};
   override type: OptionsBuilderType = "other";
   stdin(value: boolean): this {
     this.options.stdin = value;

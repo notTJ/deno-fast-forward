@@ -12,3 +12,5 @@ export * from "./ffmpeg_command.ts";
 export * from "./ffprobe.ts";
 export * from "./media_info.ts";
 export * from "./mapped-output.ts";
+export * from "./command/command-builder.ts";
+export * from "./options/mod.ts";

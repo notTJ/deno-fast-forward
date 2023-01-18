@@ -2,7 +2,7 @@ import { GenericOptions } from "../generic-options.ts";
 import { OptionsBuilder, OptionsBuilderType } from "./options-builder.ts";
 
 export class GenericOptionsBuilder extends OptionsBuilder<GenericOptions> {
-  override options: Partial<GenericOptions> = {};
+  override options: GenericOptions = {};
   override type: OptionsBuilderType = "generic";
   private assignValue(optionName: keyof GenericOptions, value: any) {
     this.options[optionName] = value;

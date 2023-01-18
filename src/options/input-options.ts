@@ -2,27 +2,27 @@ import { InputOutputOptions } from "./input-output-options.ts";
 
 export interface InputOptions extends InputOutputOptions {
   // main
-  i: string;
-  stream_loop: number;
-  sseof: string;
-  isync: string;
-  itsoffset: string;
-  itsscale: string;
-  reinit_filter: string;
-  dump_attachment: string;
+  i?: string;
+  stream_loop?: number;
+  sseof?: string;
+  isync?: string;
+  itsoffset?: string;
+  itsscale?: string;
+  reinit_filter?: string;
+  dump_attachment?: string;
   // Audio + Advanced Audio
-  guess_layout_max: boolean;
+  guess_layout_max?: boolean;
   // Video + Advanced Video
-  display_rotation: string;
-  display_hflip: boolean;
-  display_vflip: boolean;
-  hwaccel: string;
-  hwaccel_device: string;
+  display_rotation?: string;
+  display_hflip?: boolean;
+  display_vflip?: boolean;
+  hwaccel?: string;
+  hwaccel_device?: string;
   // Subtitle
   // advanced
-  readrate: number;
-  re: boolean;
-  accurate_seek: boolean;
-  seek_timestamp: boolean;
-  discard: string;
+  readrate?: number;
+  re?: boolean;
+  accurate_seek?: boolean;
+  seek_timestamp?: boolean;
+  discard?: string;
 }
