@@ -52,8 +52,11 @@ Deno.test({
     encoding.noAudio = true;
     encoding.noVideo = true;
     encoding.logLevel = "repeat+level+verbose";
-    encoding.complexFilter = "complexFilter"
-    encoding.mappedOutputs = [{ filename: "mapped-output.mp4", identifier: "[FC]" }]
+    encoding.complexFilter = "complexFilter";
+    encoding.mappedOutputs = [{
+      filename: "mapped-output.mp4",
+      identifier: "[FC]",
+    }];
     encoding.args = ["-custom"];
 
     const cmd: Array<string> = new FFmpegCommand(encoding).toArray();
