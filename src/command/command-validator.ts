@@ -12,6 +12,7 @@ export class CommandValidator {
     this.#parameterValidator = new ParameterValidator();
     this.#optionsMap = createOptionDefinitionsMap();
   }
+
   // validate(commandOptions: CommandOptions) {
   //   for (const option in commandOptions.generic) {
   //     const value = commandOptions.generic[option];

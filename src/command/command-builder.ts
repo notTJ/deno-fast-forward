@@ -22,15 +22,18 @@ import { OutputOptionsBuilder } from "../options/builder/output-options-builder.
 import { OtherOptionsBuilder } from "../options/builder/other-options-builder.ts";
 import {Options} from "../options/options.ts";
 import {CommandValidator} from "./command-validator.ts";
+import {CommandExecutor} from "./command-executor.ts";
 
 export class CommandBuilder {
   #options: CommandOptions = {}
-  #commandValidator: CommandValidator;
+  #validator: CommandValidator;
+  #executor: CommandExecutor
   constructor() {
-    this.#commandValidator = new CommandValidator();
+    this.#validator = new CommandValidator();
+    this.#executor = new CommandExecutor();
   }
-  execute(): void {
-  }
+
+  execute = () => this.#executor.execute(this.#options)
 
   addInput(
     options: (optionsBuilder: InputOptionsBuilder) => InputOptionsBuilder,

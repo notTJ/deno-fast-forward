@@ -112,7 +112,7 @@ export const VideoOptionDefinitions = [
     cli: "autoscale",
   }),
   // advanced video options
-  createOptionWithParameter({
+  createOption({
     name: "pixel format",
     description: "Set pixel format.",
     scope: "input-output",
