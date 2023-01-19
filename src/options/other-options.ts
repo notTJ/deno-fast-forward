@@ -1,7 +1,9 @@
 // keys matching cli arg
 // options with unspecified scope (input, output, global)
 // assuming global is probably safe
-export interface OtherOptions {
+import { Options } from "./options.ts";
+
+export interface OtherOptions extends Options {
   // Main
   stdin?: boolean;
   // Video + Advanced Video

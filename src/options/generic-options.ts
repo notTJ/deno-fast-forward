@@ -1,4 +1,6 @@
-export interface GenericOptions {
+import { Options } from "./options.ts";
+
+export interface GenericOptions extends Options {
   L?: boolean;
   help?: boolean;
   // long help

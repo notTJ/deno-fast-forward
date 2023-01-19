@@ -1,5 +1,7 @@
 // shared by both input and output options
-export interface InputOutputOptions {
+import { Options } from "./options.ts";
+
+export interface InputOutputOptions extends Options {
   // main
   f?: string;
   c?: string;

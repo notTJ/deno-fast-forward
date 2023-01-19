@@ -1,6 +1,6 @@
-// keys match cli-arg for option matching
-// user-friendly naming should be put on the accessors & fluent functions
-export interface GlobalOptions {
+import { Options } from "./options.ts";
+
+export interface GlobalOptions extends Options {
   // main
   y?: boolean;
   n?: boolean;
