@@ -4,8 +4,9 @@ import { InputOptionsBuilder } from "./input-options-builder.ts";
 import { OutputOptionsBuilder } from "./output-options-builder.ts";
 import { OtherOptionsBuilder } from "./other-options-builder.ts";
 import { CommandOptions } from "../../command/command-builder.ts";
+import { Options } from "../options.ts";
 
-export abstract class OptionsBuilder<T> {
+export abstract class OptionsBuilder<T extends Options> {
   abstract options: T;
   abstract type: OptionsBuilderType;
 
@@ -54,24 +55,24 @@ export abstract class OptionsBuilder<T> {
     );
   }
 
-  buildOptions(): CommandOptions {
-    let commandOptions: CommandOptions = {};
+  build(): T {
+    let options: Options = {};
     if (isGenericOptionsBuilder(this)) {
-      commandOptions.genericOptions = this.asGenericOptionsBuilder().options;
+      options = this.asGenericOptionsBuilder().options;
     }
     if (isGlobalOptionsBuilder(this)) {
-      commandOptions.globalOptions = this.asGlobalOptionsBuilder().options;
+      options = this.asGlobalOptionsBuilder().options;
     }
     if (isInputOptionsBuilder(this)) {
-      commandOptions.inputOptions = this.asInputOptionsBuilder().options;
+      options = this.asInputOptionsBuilder().options;
     }
     if (isOutputOptionsBuilder(this)) {
-      commandOptions.outputOptions = this.asOutputOptionsBuilder().options;
+      options = this.asOutputOptionsBuilder().options;
     }
     if (isOtherOptionsBuilder(this)) {
-      commandOptions.otherOptions = this.asOtherOptionsBuilder().options;
+      options = this.asOtherOptionsBuilder().options;
     }
-    return commandOptions;
+    return options as T;
   }
 }
 
