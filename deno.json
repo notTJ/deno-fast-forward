@@ -11,7 +11,7 @@
     "jsx": "react",
     "jsxFactory": "React.createElement",
     "jsxFragmentFactory": "React.Fragment",
-    "lib": [ "deno.window", "dom.asynciterable" ],
+    "lib": ["deno.window", "dom.asynciterable", "es2020"],
     "noFallthroughCasesInSwitch": false,
     "noImplicitAny": true,
     "noImplicitReturns": true,
